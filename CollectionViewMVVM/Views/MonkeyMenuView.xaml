@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewMVVM.Views.MonkeyMenuView"
+             Title="MonkeyMenuView">
+    <RefreshView 
+             Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <CollectionView  ItemsSource="{Binding Monkeys}" ItemsLayout="VerticalList" x:Name="theCollectionView" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           IconImageSource="trash_can.png"
+                                           BackgroundColor="LightPink"
+                                           Command="{Binding Source={x:Reference theCollectionView}, Path=BindingContext.DeleteCommand}"
+                                           CommandParameter="{Binding}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Grid.Row="0"
+                           Source="{Binding ImageUrl}"
+                            />
+                            <Label Grid.Column="0" Grid.Row="1"
+                           Text="{Binding Name}"
+                            FontAttributes="Bold"/>
+                            <Label Grid.Column="2" Grid.RowSpan="1"
+                           Text="{Binding Details}"
+                            FontAttributes="Bold"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
