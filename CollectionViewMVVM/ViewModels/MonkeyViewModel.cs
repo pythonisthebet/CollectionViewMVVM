@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace CollectionViewMVVM.ViewModels
 {
-    internal class ShowMonkeyListViewModel: INotifyPropertyChanged
+    public class MonkeyViewModel: INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
 
@@ -97,7 +97,7 @@ namespace CollectionViewMVVM.ViewModels
             List<Monkey> list = await service.GetMonkeys();
             this.Monkeys = new ObservableCollection<Monkey>(list);
         }
-        public ShowMonkeyListViewModel()
+        public MonkeyViewModel()
         {
             monkeys = new ObservableCollection<Monkey>();
             SelectedNames = "none";

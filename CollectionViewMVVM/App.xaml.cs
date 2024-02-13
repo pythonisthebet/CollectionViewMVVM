@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new Views.MonkeyMenuView();
+            MainPage = new AppShell();
         }
     }
 }
