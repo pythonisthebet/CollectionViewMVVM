@@ -7,7 +7,7 @@ using CollectionViewMVVM.Models;
 
 namespace CollectionViewMVVM.Services
 {
-    internal class MonkeyService
+    public class MonkeyService
     {
         public MonkeyService()
         {
