@@ -6,6 +6,6 @@ public partial class MonkeyMenuView : ContentPage
 	public MonkeyMenuView(MonkeyViewModel vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
+		BindingContext = vm; 
 	}
 }
