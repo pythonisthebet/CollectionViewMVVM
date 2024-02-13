@@ -8,6 +8,7 @@ using CollectionViewMVVM.Models;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ShellLesson.ViewModels;
 
 namespace CollectionViewMVVM.ViewModels
 {
