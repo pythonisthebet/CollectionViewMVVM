@@ -84,7 +84,7 @@ namespace CollectionViewMVVM.ViewModels
                 { "selectedMonkey",SelectedMonkey}
             };
                 //Add goto here to show details
-                await Shell.Current.GoToAsync($"monkeyDetails", navParam);
+                await Shell.Current.GoToAsync("monkeyDetails", navParam);
 
                 SelectedMonkey = null;
             }
@@ -120,76 +120,7 @@ namespace CollectionViewMVVM.ViewModels
             ReadMonkeys();
         }
 
-        /*
-         private ObservableCollection<Monkey> monkeys;
-        public ObservableCollection<Monkey> Monkeys
-        {
-            get
-            {
-                return this.monkeys;
-            }
-            set
-            {
-                this.monkeys = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private MonkeysService monkeysService;
-        public MonkeysViewModel(MonkeysService service)
-        {
-            this.monkeysService = service;
-            monkeys = new ObservableCollection<Monkey>();
-            ReadMonkeys();
-        }
-
-        private async void ReadMonkeys()
-        {
-            MonkeysService service = this.monkeysService;
-            List<Monkey> list = await service.GetMonkeys();
-            this.Monkeys = new ObservableCollection<Monkey>(list);
-        }
-
-
-        #region Single Selection
-        private Object selectedMonkey;
-        public Object SelectedMonkey
-        {
-            get
-            {
-                return this.selectedMonkey;
-            }
-            set
-            {
-                this.selectedMonkey = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand SingleSelectCommand => new Command(OnSingleSelectMonkey);
-
-        async void OnSingleSelectMonkey()
-        {
-            if (SelectedMonkey != null)
-            {
-                var navParam = new Dictionary<string, object>()
-            {
-                { "selectedMonkey",SelectedMonkey}
-            };
-                //Add goto here to show details
-                await Shell.Current.GoToAsync($"monkeyDetails", navParam);
-                
-                SelectedMonkey = null;
-            }
-        }
-
-
-        #endregion
-          
-          
-         
-         */
-
+        
     }
 
 }

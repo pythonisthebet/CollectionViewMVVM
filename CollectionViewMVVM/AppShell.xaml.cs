@@ -10,7 +10,7 @@
 
         void RegisterRoutes()
         {
-            Routing.RegisterRoute("monkeyDetails", typeof(MonkeyDetailsView));
+            Routing.RegisterRoute("monkeyDetails", typeof(Views.MonkeyDetailsView));
 
         }
     }
