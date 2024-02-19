@@ -31,11 +31,12 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterPages(this MauiAppBuilder builder)
     {
         //--------singleton Pages
-        builder.Services.AddSingleton<MonkeyMenuView>();
+        builder.Services.AddSingleton<CollectionViewMVVM.Views.Picker>();
 
         //--------Transient pages
 
         builder.Services.AddTransient<MonkeyDetailsView>();
+        builder.Services.AddTransient<MonkeyMenuView>();
 
         return builder;
     }
@@ -47,10 +48,11 @@ public static class MauiProgram
     }
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
     {
-        builder.Services.AddSingleton<MonkeyViewModel>();
+        builder.Services.AddSingleton<PickerViewModel>();
 
         //--------Transient ViewModels
         builder.Services.AddTransient<MonkeyDetailViewModel>();
+        builder.Services.AddTransient<MonkeyViewModel>();
 
         return builder;
     }

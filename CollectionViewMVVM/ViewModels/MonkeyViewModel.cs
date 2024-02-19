@@ -12,7 +12,7 @@ using ShellLesson.ViewModels;
 
 namespace CollectionViewMVVM.ViewModels
 {
-
+    [QueryProperty(nameof(SelectedFilter), "selectedFilter")]
     public class MonkeyViewModel: ViewModelBase
     {
         private bool isRefreshing;
@@ -41,7 +41,19 @@ namespace CollectionViewMVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        private string selectedFilter;
+        public string SelectedFilter
+        {
+            get
+            {
+                return this.selectedFilter;
+            }
+            set
+            {
+                this.selectedFilter = value;
+                OnPropertyChanged();
+            }
+        }
         private MonkeyService monkeysService;
         public MonkeyViewModel(MonkeyService service)
         {
@@ -54,6 +66,13 @@ namespace CollectionViewMVVM.ViewModels
         {
             MonkeyService service = this.monkeysService;
             List<Monkey> list = await service.GetMonkeys();
+            foreach (Monkey monkey in list)
+            {
+                if (monkey.Location != selectedFilter)
+                {
+                    list.Remove(monkey);
+                }
+            }
             this.Monkeys = new ObservableCollection<Monkey>(list);
         }
 

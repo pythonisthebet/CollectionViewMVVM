@@ -11,7 +11,7 @@
         void RegisterRoutes()
         {
             Routing.RegisterRoute("monkeyDetails", typeof(Views.MonkeyDetailsView));
-
+            Routing.RegisterRoute("monkeyFilter", typeof(Views.MonkeyMenuView));
         }
     }
 }

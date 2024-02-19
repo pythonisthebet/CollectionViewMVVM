@@ -64,6 +64,9 @@
 	  <MauiXaml Update="Views\MonkeyMenuView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Picker.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
