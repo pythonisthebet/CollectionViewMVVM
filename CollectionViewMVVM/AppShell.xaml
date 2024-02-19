@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Monkeys"
-        ContentTemplate="{DataTemplate views:MonkeyMenuView}"
+        ContentTemplate="{DataTemplate views:Picker}"
         Route="Monkeys" />
 
 </Shell>
