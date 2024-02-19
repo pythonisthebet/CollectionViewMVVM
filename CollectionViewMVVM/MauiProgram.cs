@@ -1,4 +1,5 @@
 ﻿using CollectionViewMVVM.Services;
+using CollectionViewMVVM.ViewModels;
 using CollectionViewMVVM.Views;
 using Microsoft.Extensions.Logging;
 
@@ -46,10 +47,10 @@ public static class MauiProgram
     }
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
     {
-        builder.Services.AddSingleton<MonkeyMenuView>();
+        builder.Services.AddSingleton<MonkeyViewModel>();
 
         //--------Transient ViewModels
-        builder.Services.AddTransient<MonkeyDetailsView>();
+        builder.Services.AddTransient<MonkeyDetailViewModel>();
 
         return builder;
     }
