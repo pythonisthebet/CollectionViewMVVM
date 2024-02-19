@@ -30,14 +30,16 @@ namespace CollectionViewMVVM.ViewModels
 
         async void OnSingleSelectMonkey()
         {
-            string SelectedFilter = null;
-
+            if (selectedFilter != null)
+            {
                 var navParam = new Dictionary<string, object>()
             {
                 { "selectedFilter",SelectedFilter}
             };
                 //Add goto here to show details
                 await Shell.Current.GoToAsync("monkeyFilter", navParam);
+                selectedFilter = null;
+            }
         }
 
 

@@ -13,6 +13,7 @@
             Placeholder="put location here plese, you can write 'all' to show all the monkeys"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+            Text="{Binding SelectedFilter}"
             />
         <Button
             Command="{Binding SingleSelectCommand}"
