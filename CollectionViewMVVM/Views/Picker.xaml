@@ -9,8 +9,15 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Entry
-            
-            
+            x:Name="entry"
+            Placeholder="put location here plese, you can write 'all' to show all the monkeys"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+        <Button
+            Command="{Binding SingleSelectCommand}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
             />
     </VerticalStackLayout>
 </ContentPage>

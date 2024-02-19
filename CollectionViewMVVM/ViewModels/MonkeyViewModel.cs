@@ -68,7 +68,7 @@ namespace CollectionViewMVVM.ViewModels
             List<Monkey> list = await service.GetMonkeys();
             foreach (Monkey monkey in list)
             {
-                if (monkey.Location != selectedFilter)
+                if (monkey.Location != selectedFilter && selectedFilter != "all")
                 {
                     list.Remove(monkey);
                 }

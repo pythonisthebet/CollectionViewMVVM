@@ -11,16 +11,17 @@ namespace CollectionViewMVVM.ViewModels
     public class PickerViewModel : ViewModelBase
     {
         #region Single Selection
-        private Object selectedMonkey;
-        public Object SelectedMonkey
+
+        private string selectedFilter;
+        public string SelectedFilter
         {
             get
             {
-                return this.selectedMonkey;
+                return this.selectedFilter;
             }
             set
             {
-                this.selectedMonkey = value;
+                this.selectedFilter = value;
                 OnPropertyChanged();
             }
         }
@@ -29,17 +30,14 @@ namespace CollectionViewMVVM.ViewModels
 
         async void OnSingleSelectMonkey()
         {
-            if (SelectedMonkey != null)
-            {
+            string SelectedFilter = null;
+
                 var navParam = new Dictionary<string, object>()
             {
-                { "selectedMonkey",SelectedMonkey}
+                { "selectedFilter",SelectedFilter}
             };
                 //Add goto here to show details
-                await Shell.Current.GoToAsync("monkeyDetails", navParam);
-
-                SelectedMonkey = null;
-            }
+                await Shell.Current.GoToAsync("monkeyFilter", navParam);
         }
 
 
