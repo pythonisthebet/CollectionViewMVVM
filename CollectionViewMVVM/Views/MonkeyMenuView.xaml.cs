@@ -3,7 +3,7 @@ namespace CollectionViewMVVM.Views;
 
 public partial class MonkeyMenuView : ContentPage
 {
-	public MonkeyMenuView(MonkeyViewModel vm)
+    public MonkeyMenuView(MonkeyViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm; 

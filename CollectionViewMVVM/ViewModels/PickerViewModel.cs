@@ -1,4 +1,6 @@
-﻿using ShellLesson.ViewModels;
+﻿using CollectionViewMVVM.Models;
+using CollectionViewMVVM.Services;
+using ShellLesson.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,15 +32,25 @@ namespace CollectionViewMVVM.ViewModels
 
         async void OnSingleSelectMonkey()
         {
-            if (selectedFilter != null)
+            List<Monkey> list;
+            MonkeyService service = new MonkeyService();
+            if (SelectedFilter == "all")
+            {
+                list = await service.GetMonkeys();
+
+            }
+            else
+            {
+                list = await service.GetMonkeysByLocation(SelectedFilter);
+            }
+            if (SelectedFilter != null)
             {
                 var navParam = new Dictionary<string, object>()
             {
-                { "selectedFilter",SelectedFilter}
+                { "selectedFilter",list}
             };
                 //Add goto here to show details
                 await Shell.Current.GoToAsync("monkeyFilter", navParam);
-                selectedFilter = null;
             }
         }
 

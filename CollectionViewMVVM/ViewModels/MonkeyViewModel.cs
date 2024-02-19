@@ -15,6 +15,20 @@ namespace CollectionViewMVVM.ViewModels
     [QueryProperty(nameof(SelectedFilter), "selectedFilter")]
     public class MonkeyViewModel: ViewModelBase
     {
+
+        private List<Monkey> selectedFilter;
+        public List<Monkey> SelectedFilter
+        {
+            get
+            {
+                return this.selectedFilter;
+            }
+            set
+            {
+                this.selectedFilter = value;
+                OnPropertyChanged();
+            }
+        }
         private bool isRefreshing;
         private ObservableCollection<Monkey> monkeys;
         public ObservableCollection<Monkey> Monkeys
@@ -41,40 +55,32 @@ namespace CollectionViewMVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-        private string selectedFilter;
-        public string SelectedFilter
-        {
-            get
-            {
-                return this.selectedFilter;
-            }
-            set
-            {
-                this.selectedFilter = value;
-                OnPropertyChanged();
-            }
-        }
+        
         private MonkeyService monkeysService;
-        public MonkeyViewModel(MonkeyService service)
-        {
-            this.monkeysService = service;
-            monkeys = new ObservableCollection<Monkey>();
-            ReadMonkeys();
-        }
+        //public MonkeyViewModel(MonkeyService service)
+        //{
 
-        private async void ReadMonkeys()
-        {
-            MonkeyService service = this.monkeysService;
-            List<Monkey> list = await service.GetMonkeys();
-            foreach (Monkey monkey in list)
-            {
-                if (monkey.Location != selectedFilter && selectedFilter != "all")
-                {
-                    list.Remove(monkey);
-                }
-            }
-            this.Monkeys = new ObservableCollection<Monkey>(list);
-        }
+        //    this.monkeysService = service;
+        //    monkeys = new ObservableCollection<Monkey>();
+        //    ReadMonkeys();
+        //}
+
+
+        //private async void ReadMonkeys()
+        //{
+        //    List<Monkey> list;
+        //    MonkeyService service = this.monkeysService;
+        //    if (SelectedFilter == "all")
+        //    {
+        //        list = await service.GetMonkeys();
+
+        //    }
+        //    else 
+        //    {
+        //        list = await service.GetMonkeysByLocation(SelectedFilter);
+        //    }
+        //    this.Monkeys = new ObservableCollection<Monkey>(list);
+        //}
 
 
         #region Single Selection
@@ -124,20 +130,20 @@ namespace CollectionViewMVVM.ViewModels
             }
         }
 
-        public ICommand RefreshCommand => new Command(Refresh);
-        private async void Refresh()
-        {
-            Monkeys.Add(new Monkey
-            {
-                Name = "Monkey",
-                Location = "Israel",
-                Details = "Born Today!",
-                ImageUrl = "new_monkey.png",
-                IsFavorite = false
-            });
-            IsRefreshing = false;
-            ReadMonkeys();
-        }
+        //public ICommand RefreshCommand => new Command(Refresh);
+        //private async void Refresh()
+        //{
+        //    Monkeys.Add(new Monkey
+        //    {
+        //        Name = "Monkey",
+        //        Location = "Israel",
+        //        Details = "Born Today!",
+        //        ImageUrl = "new_monkey.png",
+        //        IsFavorite = false
+        //    });
+        //    IsRefreshing = false;
+        //    ReadMonkeys();
+        //}
 
         
     }

@@ -32,7 +32,7 @@ namespace CollectionViewMVVM.Services
             monkeys.Remove(monkey);
         }
 
-        public List<Monkey> GetMonkeysByLocation(string location)
+        public async Task<List<Monkey>> GetMonkeysByLocation(string location)
         {
             return monkeys.Where(m => m.Location == location).ToList();
         }
