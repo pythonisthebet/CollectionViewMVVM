@@ -36,6 +36,7 @@ namespace CollectionViewMVVM.ViewModels
             if (selectedFilter != null)
             {
                 List<Monkey> list = new List<Monkey>();
+                List<Monkey> lst = new List<Monkey>();
                 MonkeyService service = new MonkeyService();
                 if (SelectedFilter == "all")
                 {
@@ -45,7 +46,7 @@ namespace CollectionViewMVVM.ViewModels
                 else
                 {
                     list = await service.GetMonkeys();
-                    List<Monkey> lst = new List<Monkey>();
+                    lst = new List<Monkey>();
                     foreach (Monkey monkey in list)
                     {
                         if (monkey.Location.Contains(selectedFilter))
@@ -53,13 +54,14 @@ namespace CollectionViewMVVM.ViewModels
                             lst.Add(monkey);
                         }
                     }
+                }
                     var navParam = new Dictionary<string, object>()
             {
                 { "selectedFilter",lst}
             };
                     //Add goto here to show details
                     await Shell.Current.GoToAsync("monkeyFilter", navParam);
-                }
+                
             }
             
         }
