@@ -3,6 +3,7 @@ using CollectionViewMVVM.Services;
 using ShellLesson.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,26 +33,35 @@ namespace CollectionViewMVVM.ViewModels
 
         async void OnSingleSelectMonkey()
         {
-            List<Monkey> list;
-            MonkeyService service = new MonkeyService();
-            if (SelectedFilter == "all")
+            if (selectedFilter != null)
             {
-                list = await service.GetMonkeys();
+                List<Monkey> list = new List<Monkey>();
+                MonkeyService service = new MonkeyService();
+                if (SelectedFilter == "all")
+                {
+                    list = await service.GetMonkeys();
 
-            }
-            else
+                }
+                else
+                {
+                    list = await service.GetMonkeys();
+                    List<Monkey> lst = new List<Monkey>();
+                    foreach (Monkey monkey in list)
+                    {
+                        if (monkey.Location.Contains(selectedFilter))
+                        {
+                            lst.Add(monkey);
+                        }
+                    }
+                    var navParam = new Dictionary<string, object>()
             {
-                list = await service.GetMonkeysByLocation(SelectedFilter);
-            }
-            if (SelectedFilter != null)
-            {
-                var navParam = new Dictionary<string, object>()
-            {
-                { "selectedFilter",list}
+                { "selectedFilter",lst}
             };
-                //Add goto here to show details
-                await Shell.Current.GoToAsync("monkeyFilter", navParam);
+                    //Add goto here to show details
+                    await Shell.Current.GoToAsync("monkeyFilter", navParam);
+                }
             }
+            
         }
 
 

@@ -9,9 +9,4 @@ public partial class Picker : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
-
-    public void clear()
-    {
-        entry.Text = "";
-    }
 }

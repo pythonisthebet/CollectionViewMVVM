@@ -8,13 +8,38 @@
             Text="Location pls:!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Entry
+        <Picker x:Name="picker" SelectedItem="{Binding SelectedFilter}"
+        Title="Select a monkey Location">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>all</x:String>
+                    <x:String>Africa</x:String>
+                    <x:String>Asia</x:String>
+                    <x:String>Central &amp; South America</x:String>
+                    <x:String>Central and East Africa</x:String>
+                    <x:String>Brazil</x:String>
+                    <x:String>South America</x:String>
+                    <x:String>Southern Cameroon</x:String>
+                    <x:String>Gabon</x:String>
+                    <x:String>Equatorial Guinea</x:String>
+                    <x:String>Congo</x:String>
+                    <x:String>Borneo</x:String>
+                    <x:String>Vietnam</x:String>
+                    <x:String>Laos</x:String>
+                    <x:String>China</x:String>
+                    <x:String>Indonesia</x:String>
+                    <x:String>Sri Lanka</x:String>
+                    <x:String>Ethiopia</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <!--<Entry
             x:Name="entry"
             Placeholder="put location here plese, you can write 'all' to show all the monkeys"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
             Text="{Binding SelectedFilter}"
-            />
+            />-->
         <Button
             Command="{Binding SingleSelectCommand}"
             VerticalOptions="Center" 
