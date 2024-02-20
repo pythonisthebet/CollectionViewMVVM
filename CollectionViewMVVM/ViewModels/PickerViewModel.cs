@@ -25,11 +25,10 @@ namespace CollectionViewMVVM.ViewModels
             set
             {
                 this.selectedFilter = value;
-                OnPropertyChanged();
+                OnSingleSelectMonkey();
             }
         }
 
-        public ICommand SingleSelectCommand => new Command(OnSingleSelectMonkey);
 
         async void OnSingleSelectMonkey()
         {

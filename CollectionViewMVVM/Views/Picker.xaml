@@ -40,10 +40,10 @@
             HorizontalOptions="Center"
             Text="{Binding SelectedFilter}"
             />-->
-        <Button
+        <!--<Button
             Command="{Binding SingleSelectCommand}"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            />
+            />-->
     </VerticalStackLayout>
 </ContentPage>
