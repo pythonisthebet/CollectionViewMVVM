@@ -40,7 +40,7 @@ namespace CollectionViewMVVM.ViewModels
                 MonkeyService service = new MonkeyService();
                 if (SelectedFilter == "all")
                 {
-                    list = await service.GetMonkeys();
+                    lst = await service.GetMonkeys();
 
                 }
                 else
